@@ -1,6 +1,7 @@
 package com.app.furniture.config.security;
 
 import com.app.furniture.filter.JwtFilter;
+import com.app.furniture.handler.CustomAccessDeniedHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -48,7 +49,8 @@ public class SecurityConfig {
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
                 .authenticationProvider(authenticationProvider)
-                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
+                .exceptionHandling(exceptionConfig -> exceptionConfig.accessDeniedHandler(new CustomAccessDeniedHandler()));
         return http.build();
     }
 
