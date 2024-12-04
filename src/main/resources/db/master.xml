@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+        <changeSet id="2024-11-29-001" author="Mahmoud Gamal">
+            <sqlFile path="db/changelog/2024_11_29_7_26_create_table_users.sql" />
+        </changeSet>
+
+        <changeSet id="2024-11-29-002" author="Mahmoud Gamal">
+            <sqlFile path="db/changelog/2024_11_29_7_27_create_table_roles.sql" />
+        </changeSet>
+
+        <changeSet id="2024-11-29-003" author="Mahmoud Gamal">
+            <sqlFile path="db/changelog/2024_11_29_7_27_create_table_users_roles.sql" />
+        </changeSet>
+
+        <changeSet id="2024-11-29-004" author="Mahmoud Gamal">
+            <sqlFile path="db/changelog/2024_11_29_7_28_create_table_reset-password-token.sql" />
+        </changeSet>
+    
+        <changeSet id="2024-11-29-005" author="Mahmoud Gamal">
+            <sqlFile path="db/changelog/2024_11_29_7_29_create_table_categories.sql" />
+        </changeSet>
+
+        <changeSet id="2024-11-29-006" author="Mahmoud Gamal">
+            <sqlFile path="db/changelog/2024_11_29_7_29_create_table_products.sql" />
+        </changeSet>
+
+        <changeSet id="2024-11-29-007" author="Mahmoud Gamal">
+            <sqlFile path="db/changelog/2024_11_29_7_30_create_table_cart_items.sql" />
+        </changeSet>
+
+        <changeSet id="2024-11-29-008" author="Mahmoud Gamal">
+            <sqlFile path="db/changelog/2024_11_29_7_31_create_table_wish_list.sql" />
+        </changeSet>
+
+</databaseChangeLog>
