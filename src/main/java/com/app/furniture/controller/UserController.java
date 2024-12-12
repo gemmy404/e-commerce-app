@@ -25,7 +25,7 @@ public class UserController {
         return ResponseEntity.ok(userService.getUserProfile(authentication));
     }
 
-    @PostMapping("/profile-picture")
+    @PostMapping(value = "/profile-picture", consumes = "multipart/form-data")
     public ResponseEntity<?> uploadProfilePicture(@RequestParam("file") MultipartFile file,
                                                   Authentication connectedUser) throws IOException {
         userService.uploadProfilePicture(file, connectedUser);
