@@ -17,6 +17,6 @@ public interface CartService {
 
     void removeAllProductsFromCart(Authentication connectedUser);
 
-    //    void checkoutProducts(Authentication connectedUser);
+    void checkoutProducts(Authentication connectedUser) throws BadRequestException;
 
 }

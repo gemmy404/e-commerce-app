@@ -50,6 +50,12 @@ public class CartController {
         cartService.removeAllProductsFromCart(connectedUser);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    @PostMapping("/check-out")
+    public ResponseEntity<?> checkoutProducts(Authentication connectedUser) throws BadRequestException {
+        cartService.checkoutProducts(connectedUser);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
     
 
 }
