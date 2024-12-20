@@ -107,6 +107,7 @@ public class CartServiceImpl implements CartService {
                 .orderedAt(LocalDate.now())
                 .deliveredAt(LocalDate.now().plusDays(3))
                 .state("Ordered")
+                .totalPrice(0.0)
                 .user(user)
                 .build();
         Order savedOrder = orderRepo.save(order);

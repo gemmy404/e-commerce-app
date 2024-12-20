@@ -37,4 +37,12 @@
             <sqlFile path="db/changelog/2024_11_29_7_31_create_table_wish_list.sql" />
         </changeSet>
 
+        <changeSet id="2024-12-20-009" author="Mahmoud Gamal">
+            <sqlFile path="db/changelog/2024_12-20_1_39_create_table_orders.sql" />
+        </changeSet>
+
+        <changeSet id="2024-12-20-010" author="Mahmoud Gamal">
+            <sqlFile path="db/changelog/2024_12-20_1_42_create_table_order_items.sql" />
+        </changeSet>
+
 </databaseChangeLog>
