@@ -7,6 +7,13 @@ E-Commerce Application is a backend system designed to facilitate seamless onlin
 
 ## Features
 
+### **E-Commerce Functionalities**
+- **Homepage Browsing:** Users can explore a variety of products.
+- **Shopping Cart:** Add, view, and remove items in the cart.
+- **Wishlist:** Save products for future consideration.
+- **Order Review:**
+    - View order details: `orderedAt`, `deliveredAt`, and `state` (Ordered/Delivered).
+
 ### **User Management**
 - **User Registration:** Simple and user-friendly account creation.
 - **Login:** Secure authentication using JWT tokens.
@@ -20,13 +27,6 @@ E-Commerce Application is a backend system designed to facilitate seamless onlin
     - Browse and view products on the homepage.
     - Manage shopping cart and wishlist.
     - Place orders and view detailed order information.
-
-### **E-Commerce Functionalities**
-- **Homepage Browsing:** Users can explore a variety of products.
-- **Shopping Cart:** Add, view, and remove items in the cart.
-- **Wishlist:** Save products for future consideration.
-- **Order Review:**
-    - View order details: `orderedAt`, `deliveredAt`, and `state` (Ordered/Delivered).
 
 ---
 
