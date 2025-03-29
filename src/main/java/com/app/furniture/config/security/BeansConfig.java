@@ -17,6 +17,8 @@ public class BeansConfig {
 
     private final UserService userService;
 
+    // AuthProvider and AuthManager to check username is exist or not in user table
+
     @Bean
     public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
