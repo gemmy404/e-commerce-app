@@ -1,11 +1,9 @@
 package com.app.furniture.entity;
 
+import com.app.furniture.enums.OrderState;
 import jakarta.persistence.*;
 import lombok.*;
-import lombok.experimental.SuperBuilder;
-import org.springframework.data.annotation.CreatedDate;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -23,11 +21,12 @@ public class Order {
     private Double totalPrice;
 
     @Column(nullable = false, updatable = false)
-    private LocalDate orderedAt;
+    private LocalDateTime orderedAt;
     @Column(nullable = false, updatable = false)
-    private LocalDate deliveredAt;
+    private LocalDateTime deliveredAt;
     @Column(nullable = false)
-    private String state;
+    @Enumerated(EnumType.STRING)
+    private OrderState state;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)

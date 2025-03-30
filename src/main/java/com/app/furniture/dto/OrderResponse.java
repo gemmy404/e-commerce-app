@@ -1,12 +1,14 @@
 package com.app.furniture.dto;
 
-import java.time.LocalDate;
+import com.app.furniture.enums.OrderState;
+
+import java.time.LocalDateTime;
 
 public record OrderResponse(
         Integer id,
-        LocalDate orderedAt,
-        LocalDate deliveredAt,
-        String state,
+        LocalDateTime orderedAt,
+        LocalDateTime deliveredAt,
+        OrderState state,
         Double totalPrice
 ) {
 }

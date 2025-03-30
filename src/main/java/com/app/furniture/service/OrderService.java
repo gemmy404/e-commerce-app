@@ -12,4 +12,6 @@ public interface OrderService {
 
     PageResponse<OrderItemResponse> getItemsByOrderId(Integer orderId, Integer page, Integer size, Authentication connectedUser) throws BadRequestException;
 
+    void updateOrderState();
+
 }

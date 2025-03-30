@@ -3,6 +3,7 @@ package com.app.furniture.service.impl;
 import com.app.furniture.dto.CartItemResponse;
 import com.app.furniture.dto.PageResponse;
 import com.app.furniture.entity.*;
+import com.app.furniture.enums.OrderState;
 import com.app.furniture.mapper.CartItemMapper;
 import com.app.furniture.repository.CartItemRepo;
 import com.app.furniture.repository.OrderItemRepo;
@@ -21,7 +22,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -104,25 +105,31 @@ public class CartServiceImpl implements CartService {
             throw new BadRequestException("Your cart doesn't contain any products.");
         }
         Order order = Order.builder()
-                .orderedAt(LocalDate.now())
-                .deliveredAt(LocalDate.now().plusDays(3))
-                .state("Ordered")
+                .orderedAt(LocalDateTime.now())
+                .deliveredAt(LocalDateTime.now().plusDays(3))
+                .state(OrderState.ORDERED)
                 .totalPrice(0.0)
                 .user(user)
                 .build();
         Order savedOrder = orderRepo.save(order);
         List<OrderItem> orderItems = new ArrayList<>();
-        items.forEach(item -> {
+        for (CartItem item : items) {
             OrderItem orderItem = new OrderItem();
             Product product = item.getProduct();
             orderItem.setProduct(product);
             orderItem.setQuantity(item.getQuantity());
             orderItem.setPrice(item.getPrice());
             orderItem.setOrder(savedOrder);
-            product.setStockQuantity(product.getStockQuantity() - item.getQuantity());
+            int remainingQuantity = product.getStockQuantity() - item.getQuantity();
+            if (remainingQuantity >= 0) {
+                product.setStockQuantity(remainingQuantity);
+            } else {
+                orderRepo.deleteById(savedOrder.getId());
+                throw new BadRequestException("Insufficient stock for the required quantity of " + item.getProduct().getName());
+            }
             productRepo.save(product);
             orderItems.add(orderItem);
-        });
+        }
         Double totalPrice = orderItems.stream().mapToDouble(OrderItem::getPrice).sum();
         savedOrder.setTotalPrice(totalPrice);
         orderRepo.save(savedOrder);
