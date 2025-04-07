@@ -59,10 +59,14 @@ public class OrderServiceImpl implements OrderService {
         return orderMapper.toOrderitemPageResponse(items);
     }
 
-    @Scheduled(fixedRate = 21600000)
+    @Scheduled(initialDelay = 600000, fixedRate = 21600000)
     public void updateOrderState() {
         LocalDateTime oneDayAgo = LocalDateTime.now().minusDays(1);
         List<Order> orders = orderRepo.findAllPendingOrders(oneDayAgo, OrderState.ORDERED);
+        if (orders.isEmpty()) {
+            log.info("No orders pending");
+            return;
+        }
 
         orders.forEach(order ->
                     order.setState(OrderState.SHIPPED)

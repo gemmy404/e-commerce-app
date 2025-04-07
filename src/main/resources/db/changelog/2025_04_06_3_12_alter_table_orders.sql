@@ -1,0 +1,4 @@
+ALTER TABLE orders
+    MODIFY COLUMN ordered_at DATETIME(6) NOT NULL,
+    MODIFY COLUMN delivered_at DATETIME(6) NOT NULL;
+

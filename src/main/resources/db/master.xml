@@ -49,4 +49,8 @@
             <sqlFile path="db/changelog/2025_03-30_2_59_alter_table_orders.sql" />
         </changeSet>
 
+        <changeSet id="2025-03-30-012" author="Mahmoud Gamal">
+            <sqlFile path="db/changelog/2025_04_06_3_12_alter_table_orders.sql" />
+        </changeSet>
+
 </databaseChangeLog>
